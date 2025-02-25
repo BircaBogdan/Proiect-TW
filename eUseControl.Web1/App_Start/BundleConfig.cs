@@ -3,8 +3,8 @@ using System.Web.Optimization;
 
 namespace eUseControl.Web1.App_Start
 {
-	public class BundleConfig
-	{
+    public class BundleConfig
+    {
         public static void RegisterBundles(BundleCollection bundles)
         {
 
@@ -64,5 +64,5 @@ namespace eUseControl.Web1.App_Start
 
             BundleTable.EnableOptimizations = true;
         }
-	}
+    }
 }
