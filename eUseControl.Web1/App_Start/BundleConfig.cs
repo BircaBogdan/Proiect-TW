@@ -14,7 +14,7 @@ namespace eUseControl.Web1.App_Start
 
             bundles.Add(new StyleBundle("~/bundles/bootstrap/css")
                         .Include(
-                        "~/Content/bootstrap.min.css", new CssRewriteUrlTransform()));
+                        "~/Content/css/bootstrap.min.css", new CssRewriteUrlTransform()));
 
             bundles.Add(new StyleBundle("~/bundles/animate/css")
                 .Include(
