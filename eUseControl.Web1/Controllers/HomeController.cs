@@ -20,9 +20,21 @@ namespace eUseControl.Web1.Controllers
                s.Services = new List<string> { "Cardiologie", "Starea Pulmonară","Neurologie","Pediatrie","Stomatologie","Laborator" };
                s.Images = new List<string> { "fa fa-heartbeat text-primary fs-4", "fa fa-x-ray text-primary fs-4", "fa fa-brain text-primary fs-4", "fa fa-wheelchair text-primary fs-4", "fa fa-tooth text-primary fs-4", "fa fa-vials text-primary fs-4" };
 
-
+               
             return View(s);
         }
+        public ActionResult Service()
+        {
+               return View();
+        }
+        public ActionResult About()
+        {
+               return View();
+        }
+        public ActionResult Contact()
+        {
+               return View();
+        }
 
-    }
+     }
 }

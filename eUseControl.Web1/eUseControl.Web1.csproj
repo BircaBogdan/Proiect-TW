@@ -355,6 +355,9 @@
     <Content Include="Views\Shared\_Appointment.cshtml" />
     <Content Include="Views\Shared\_Testimonial.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Home\Service.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
