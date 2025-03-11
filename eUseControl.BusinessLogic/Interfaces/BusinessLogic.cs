@@ -8,5 +8,10 @@ namespace eUseControl.BusinessLogic
           {
                return new SessionBL();
           }
+
+          public IDoctor GetDoctorBL()
+          {
+              return new DoctorBL();
+          }
      }
 }
