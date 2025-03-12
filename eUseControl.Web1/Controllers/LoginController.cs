@@ -40,12 +40,19 @@ namespace eUseControl.Web1.Controllers
 
                     var userLogin = _session.UserLogin(data);
                     if (userLogin.Status)
-                    {
+                {
 
-                    }
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("Nume de utilizator sau parola incorecta.", userLogin.StatusMsg);
+                    return View();
+                }
+
                }
 
-               return View();
+            return View();
           }
     }
 }

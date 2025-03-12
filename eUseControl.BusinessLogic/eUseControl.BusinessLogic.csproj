@@ -60,7 +60,9 @@
     <Compile Include="Core\AdminApi.cs" />
     <Compile Include="Core\UserApi.cs" />
     <Compile Include="DBModel\UserContext.cs" />
+    <Compile Include="Interfaces\DoctorBL.cs" />
     <Compile Include="Interfaces\BusinessLogic.cs" />
+    <Compile Include="Interfaces\IDoctor.cs" />
     <Compile Include="Interfaces\ISession.cs" />
     <Compile Include="Interfaces\SessionBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
