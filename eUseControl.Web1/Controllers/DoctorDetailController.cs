@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using eUseControl.BusinessLogic.Interfaces;
+using eUseControl.Domain.Entities.Doctor;
 
 namespace eUseControl.Web1.Controllers
 {
@@ -13,7 +14,7 @@ namespace eUseControl.Web1.Controllers
         // GET: DoctorDetail
         DoctorDetailController()
         {
-            BusinessLogic business1 = new BusinessLogic();
+            DoctorBL business1 = new DoctorBL();
 
             _doctor = business1.GetDoctorBL();
         }
@@ -26,7 +27,7 @@ namespace eUseControl.Web1.Controllers
         public ActionResult GetDoctor(int id)
         {
 
-            DoctorDetail = _doctor.GetDetailDoctor(id);
+            DoctorDetail doctorDetail = _doctor.GetDetailDoctor(id);
             return View();
         
     }

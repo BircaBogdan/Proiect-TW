@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace eUseControl.Domain.Entities.Doctor
 {
-    class DoctorDetail
+    public class DoctorDetail
     {
         public int Id { get; set; }
 
