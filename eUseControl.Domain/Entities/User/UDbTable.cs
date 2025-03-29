@@ -29,5 +29,6 @@ namespace eUseControl.Domain.Entities.User
 
           [DataType(DataType.Date)]
           public DateTime LastLogin { get; set; }
+          public string LastIp { get; set; }
      }
 }

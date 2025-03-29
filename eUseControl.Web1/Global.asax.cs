@@ -7,6 +7,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
+using AutoMapper;
 using eUseControl.Web1.App_Start;
 
 namespace eUseControl.Web1
@@ -19,6 +20,7 @@ namespace eUseControl.Web1
            AreaRegistration.RegisterAllAreas();
            RouteConfig.RegisterRoutes(RouteTable.Routes);
            BundleConfig.RegisterBundles(BundleTable.Bundles);
-        }
+           Mapper.Initialize(cfg => cfg.AddProfile<AutoMapperProfile>());
+          }
     }
 }

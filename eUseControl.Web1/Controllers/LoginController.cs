@@ -33,15 +33,16 @@ namespace eUseControl.Web1.Controllers
           {
                if (ModelState.IsValid)
                {
-                    Mapper.Initialize(cfg => cfg.CreateMap<UserLogin,ULoginData>());
-                    var data = Mapper.Map<ULoginData>(login);
+                   var data = Mapper.Map<ULoginData>(login);
 
+                    data.LoginIp = Request.UserHostAddress;
                     data.LoginDateTime = DateTime.Now;
 
                     var userLogin = _session.UserLogin(data);
                     if (userLogin.Status)
                 {
-
+                    HttpCookie cookie = _session.GenCookie(login.UserName);
+                    ControllerContext.HttpContext.Response.Cookies.Add(cookie);
                     return RedirectToAction("Index", "Home");
                 }
                 else

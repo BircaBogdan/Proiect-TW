@@ -1,10 +1,10 @@
-﻿using System.Web;
-using eUseControl.Domain.Entities.User;
+﻿using eUseControl.Domain.Entities.User;
+using System.Web;
 
-namespace eUseControl.BusinessLogic.Interfaces
+public interface ISession
 {
-     public interface ISession
-     {
-          ULoginResp UserLogin(ULoginData data);
-     }
+     ULoginResp UserLogin(ULoginData data);
+     URegisterResp UserRegister(URegisterData data);
+     HttpCookie GenCookie(string username);
+     UserMinimal GetUserByCookie(string apiCookieValue);
 }
