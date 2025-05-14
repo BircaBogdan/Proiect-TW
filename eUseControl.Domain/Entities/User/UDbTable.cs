@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-//using eUseControl.Domain.Enums;
+using eUseControl.Domain.Enums;
 
 namespace eUseControl.Domain.Entities.User
 {
@@ -30,5 +30,6 @@ namespace eUseControl.Domain.Entities.User
           [DataType(DataType.Date)]
           public DateTime LastLogin { get; set; }
           public string LastIp { get; set; }
+          public LevelAcces Level { get; set; }
      }
 }

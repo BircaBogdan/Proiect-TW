@@ -55,5 +55,19 @@ namespace eUseControl.Web1.Controllers
 
             return View();
           }
-    }
+          public ActionResult Logout()
+          {
+               if (Request.Cookies["X-KEY"] != null)
+               {
+                    var cookie = new HttpCookie("X-KEY")
+                    {
+                         Expires = DateTime.Now.AddDays(-1)
+                    };
+                    Response.Cookies.Add(cookie);
+               }
+
+               Session.Clear();
+               return RedirectToAction("Index", "Home");
+          }
+     }
 }

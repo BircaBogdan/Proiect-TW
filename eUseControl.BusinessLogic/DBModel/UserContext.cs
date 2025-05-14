@@ -9,7 +9,7 @@ using eUseControl.Domain.Entities.User;
 
 namespace eUseControl.BusinessLogic.DBModel
 {
-     class UserContext : DbContext
+     public class UserContext : DbContext
      {
           public UserContext() :
               base("name=eUseControl") // connectionstring name define in your web.config

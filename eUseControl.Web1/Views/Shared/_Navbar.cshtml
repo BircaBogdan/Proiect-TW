@@ -1,25 +1,44 @@
-﻿<a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-    <h1 class="m-0 text-primary"><i class="far fa-hospital me-3"></i>Clinică</h1>
+﻿@using eUseControl.Web1.Extension
+@using eUseControl.Domain.Enums
+@using eUseControl.Domain.Entities.User
+@{
+     var user = System.Web.HttpContext.Current.GetMySessionObject();
+}
+<a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+     <h1 class="m-0 text-primary"><i class="far fa-hospital me-3"></i>Clinică</h1>
 </a>
 <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-    <span class="navbar-toggler-icon"></span>
+     <span class="navbar-toggler-icon"></span>
 </button>
 <div class="collapse navbar-collapse" id="navbarCollapse">
-    <div class="navbar-nav ms-auto p-4 p-lg-0">
-        <a href="~/Home/Index" class="nav-item nav-link @(ViewData["Title"] == "Index" ? "active" : "")">Acasă</a>
-        <a href="~/Home/About" class="nav-item nav-link @(ViewData["Title"] == "About" ? "active" : "")">Despre noi</a>
-        <a href="~/Home/Service" class="nav-item nav-link @(ViewData["Title"] == "Service" ? "active" : "")">Servicii</a>
-        <div class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pagini</a>
-            <div class="dropdown-menu rounded-0 rounded-bottom m-0">
-                <a href="avantaje.html" class="dropdown-item">Avantaje</a>
-                <a href="doctori.html" class="dropdown-item">Doctori</a>
-                <a href="programare.html" class="dropdown-item">Programare</a>
-                <a href="recenzii.html" class="dropdown-item">Recenzii</a>
-                <a href="404.html" class="dropdown-item">Pagina 404</a>
-            </div>
-        </div>
-        <a href="~/Home/Contact" class="nav-item nav-link @(ViewData["Title"] == "Contact" ? "active" : "")">Contacte</a>
-    </div>
-    <a href="programare.html" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Programare<i class="fa fa-arrow-right ms-3"></i></a>
+     <div class="navbar-nav ms-auto p-4 p-lg-0">
+          @if (user != null && user.Level == LevelAcces.Admin)
+          {
+               <a href="@Url.Action("Users", "Admin")" class="nav-item nav-link">Utilizatori</a>
+          }
+          <a href="~/Home/Index" class="nav-item nav-link @(ViewData["Title"] == "Index" ? "active" : "")">Acasă</a>
+          <a href="~/Home/About" class="nav-item nav-link @(ViewData["Title"] == "About" ? "active" : "")">Despre noi</a>
+          <a href="~/Home/Service" class="nav-item nav-link @(ViewData["Title"] == "Service" ? "active" : "")">Servicii</a>
+          <div class="nav-item dropdown">
+               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pagini</a>
+               <div class="dropdown-menu rounded-0 rounded-bottom m-0">
+                    <a href="avantaje.html" class="dropdown-item">Avantaje</a>
+                    <a href="doctori.html" class="dropdown-item">Doctori</a>
+                    <a href="programare.html" class="dropdown-item">Programare</a>
+                    <a href="recenzii.html" class="dropdown-item">Recenzii</a>
+                    <a href="404.html" class="dropdown-item">Pagina 404</a>
+               </div>
+          </div>
+          <a href="~/Home/Contact" class="nav-item nav-link @(ViewData["Title"] == "Contact" ? "active" : "")">Contacte</a>
+          @if (user != null)
+          {
+               <a class="nav-item nav-link">Salut, @user.Username!</a>
+               <a href="~/Login/Logout" class="btn btn-outline-light">Logout</a>
+          }
+          else
+          {
+               <a href="~/Login/Index" class="btn btn-outline-light">Login</a>
+          }
+     </div>
+     <a href="programare.html" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Programare<i class="fa fa-arrow-right ms-3"></i></a>
 </div>

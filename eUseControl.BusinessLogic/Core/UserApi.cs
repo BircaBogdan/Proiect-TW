@@ -79,7 +79,8 @@ namespace eUseControl.BusinessLogic.Core
                          Email = data.Email,
                          Password = LoginHelper.HashGen(data.Password),
                          LastLogin = DateTime.Now,
-                         LastIp = data.RegisterIp
+                         LastIp = data.RegisterIp,
+                         Level = 0
                     };
 
                     db.Users.Add(newUser);
