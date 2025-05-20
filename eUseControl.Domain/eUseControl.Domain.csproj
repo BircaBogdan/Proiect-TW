@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Doctor\DoctorDetail.cs" />
+    <Compile Include="Entities\Programare\UDbProgramare.cs" />
     <Compile Include="Entities\User\Session.cs" />
     <Compile Include="Entities\User\UDbTable.cs" />
     <Compile Include="Entities\User\ULoginResp.cs" />

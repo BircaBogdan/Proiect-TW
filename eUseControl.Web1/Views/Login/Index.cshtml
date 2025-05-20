@@ -1,97 +1,123 @@
 ﻿@{
-     ViewBag.Title = "Login";
+    ViewBag.Title = "Login";
 }
 
 @using System.Web.Optimization
 @model eUseControl.Web1.Models.UserLogin
 
 <div class="container-center animated slideInDown">
-     <div class="view-header">
-          <div class="header-icon">
-               <i class="pe page-header-icon pe-7s-unlock"></i>
-          </div>
-          <div class="header-title">
-               <h3>Login</h3>
-               <small>
-                    Please enter your credentials to login.
-               </small>
-          </div>
-     </div>
+    <div class="view-header">
+        <div class="header-icon">
+            <i class="pe page-header-icon pe-7s-unlock"></i>
+        </div>
+        <div class="header-title">
+            <h3>Login</h3>
+            <small>
+                Please enter your credentials to login.
+            </small>
+        </div>
+    </div>
 
-     <div class="panel panel-filled">
-          <div class="panel-body">
-               @Html.ValidationSummary(true)
-               @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { @id = "LoginForm" }))
+    <div class="panel panel-filled">
+        <div class="panel-body">
+            @Html.ValidationSummary(true)
+            @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { @id = "LoginForm" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    @Html.LabelFor(m => m.UserName, new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.UserName, new
                {
-                    @Html.AntiForgeryToken()
-                    <div class="form-group">
-                         @Html.LabelFor(m => m.UserName, new { @class = "control-label" })
-                         @Html.TextBoxFor(m => m.UserName, new
-                    {
-                        placeholder = "example@gmail.com",
-                        title = "Please enter you username",
-                        value = "",
-                        name = "username",
-                        id = "username",
-                        @class = "form-control"
-                    })
-                         <span class="help-block small">Your unique username to app</span>
-                    </div>
-                    <div class="form-group">
-                         @Html.LabelFor(m => m.Password, new { @class = "control-label" })
-                         @Html.TextBoxFor(m => m.Password, new
-                    {
-                        @class = "form-control",
-                        type = "password",
-                        title = "Please enter your password",
-                        placeholder = "******",
-                        value = "",
-                        name = "password",
-                        id = "password"
-                    })
-                         <span class="help-block small">Your strong password</span>
-                    </div>
-                    <div>
-                         <button class="btn btn-accent">Login</button>
-                         <a class="btn btn-default" href="@Url.Action("Index", "Register")">Register</a>
-                    </div>
-               }
-          </div>
-     </div>
-
+                   placeholder = "example@gmail.com",
+                   title = "Please enter you username",
+                   value = "",
+                   name = "username",
+                   id = "username",
+                   @class = "form-control"
+               })
+                    <span class="help-block small">Your unique username to app</span>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Password, new
+               {
+                   @class = "form-control",
+                   type = "password",
+                   title = "Please enter your password",
+                   placeholder = "******",
+                   value = "",
+                   name = "password",
+                   id = "password"
+               })
+                    <span class="help-block small">Your strong password</span>
+                </div>
+                <div>
+                    <button class="btn btn-accent">Login</button>
+                    <a class="btn btn-default" href="@Url.Action("Index", "Register")">Register</a>
+                </div>
+            }
+        </div>
+    </div>
 </div>
 
-
+<hr />
+<!-- 🔵 FORMULAR DE PROGRAMARE -->
+<div class="container-center animated fadeInUp" style="margin-top: 40px;">
+    <div class="panel panel-filled">
+        <div class="panel-body">
+            <h3>Formular Programare Medicală</h3>
+            <form action="/Programare/Trimite" method="post">
+                <div class="form-group">
+                    <input type="text" name="Nume" class="form-control" placeholder="Nume" required />
+                </div>
+                <div class="form-group">
+                    <input type="text" name="Prenume" class="form-control" placeholder="Prenume" required />
+                </div>
+                <div class="form-group">
+                    <input type="text" name="Telefon" class="form-control" placeholder="Telefon" required />
+                </div>
+                <div class="form-group">
+                    <input type="datetime-local" name="DataProgramare" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <select name="Serviciu" class="form-control">
+                        <option>Cardiologie</option>
+                        <option>Dermatologie</option>
+                        <option>ORL</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Trimite Programare</button>
+            </form>
+        </div>
+    </div>
+</div>
 
 @section Scripts {
-     @Scripts.Render("~/bundles/validation/js")
+    @Scripts.Render("~/bundles/validation/js")
 
-     <script type="text/javascript">
-          $(function () {
+    <script type="text/javascript">
+        $(function () {
 
-               $("#LoginForm").validate({
-                    rules: {
-                         Username: {
-                              required: true
-                         },
-                         Password: {
-                              required: true
-                         }
+            $("#LoginForm").validate({
+                rules: {
+                    Username: {
+                        required: true
                     },
-                    submitHandler: function (form) {
-                         form.submit();
-                    },
-                    errorPlacement: function (error, element) {
-                         $(element)
-                              .closest("form")
-                              .find("label[for='" + element.attr("id") + "']")
-                              .append(error);
-                    },
-                    errorElement: "span"
-               });
-          });
-
-
-     </script>
+                    Password: {
+                        required: true
+                    }
+                },
+                submitHandler: function (form) {
+                    form.submit();
+                },
+                errorPlacement: function (error, element) {
+                    $(element)
+                        .closest("form")
+                        .find("label[for='" + element.attr("id") + "']")
+                        .append(error);
+                },
+                errorElement: "span"
+            });
+        });
+    </script>
 }
-

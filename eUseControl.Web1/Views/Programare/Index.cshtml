@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Programare Medicală";
+}
+
+<h2>Formular Programare Medicală</h2>
+
+@if (ViewBag.Mesaj != null)
+{
+    <div class="alert alert-success">@ViewBag.Mesaj</div>
+}
+
+<form action="/Programare/Trimite" method="post">
+    <div class="form-group">
+        <input type="text" name="Nume" class="form-control" placeholder="Nume" required />
+    </div>
+    <div class="form-group">
+        <input type="text" name="Prenume" class="form-control" placeholder="Prenume" required />
+    </div>
+    <div class="form-group">
+        <input type="text" name="Telefon" class="form-control" placeholder="Telefon" required />
+    </div>
+    <div class="form-group">
+        <input type="datetime-local" name="DataProgramare" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <select name="Serviciu" class="form-control">
+            <option>Cardiologie</option>
+            <option>Dermatologie</option>
+            <option>ORL</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Trimite Programare</button>
+</form>

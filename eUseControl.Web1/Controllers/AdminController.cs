@@ -36,7 +36,7 @@ namespace eUseControl.Web1.Controllers
                using (var db = new UserContext())
                {
                     var users = db.Users.ToList();
-                    return View(users); // Create a simple Users.cshtml for this
+                    return View(users);
                }
           }
      }

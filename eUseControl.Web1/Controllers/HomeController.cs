@@ -15,34 +15,34 @@ namespace eUseControl.Web1.Controllers
         // GET: Home
         public ActionResult Index()
         {
-               SessionStatus();
-               if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] != "login")
-               {
-                    return RedirectToAction("Index", "Login");
-               }
+            SessionStatus();
+            if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] != "login")
+            {
+                return RedirectToAction("Index", "Login");
+            }
 
-               var user = System.Web.HttpContext.Current.GetMySessionObject();
-               Domains s = new Domains();
-               s.Title = "Servicii";
-               s.Description = "Serviciile medicale oferite";
-               s.Services = new List<string> { "Cardiologie", "Starea Pulmonară","Neurologie","Pediatrie","Stomatologie","Laborator" };
-               s.Images = new List<string> { "fa fa-heartbeat text-primary fs-4", "fa fa-x-ray text-primary fs-4", "fa fa-brain text-primary fs-4", "fa fa-wheelchair text-primary fs-4", "fa fa-tooth text-primary fs-4", "fa fa-vials text-primary fs-4" };
+            var user = System.Web.HttpContext.Current.GetMySessionObject();
+            Domains s = new Domains();
+            s.Title = "Servicii";
+            s.Description = "Serviciile medicale oferite";
+            s.Services = new List<string> { "Cardiologie", "Starea Pulmonară", "Neurologie", "Pediatrie", "Stomatologie", "Laborator" };
+            s.Images = new List<string> { "fa fa-heartbeat text-primary fs-4", "fa fa-x-ray text-primary fs-4", "fa fa-brain text-primary fs-4", "fa fa-wheelchair text-primary fs-4", "fa fa-tooth text-primary fs-4", "fa fa-vials text-primary fs-4" };
 
-               
+
             return View(s);
         }
         public ActionResult Service()
         {
-               return View();
+            return View();
         }
         public ActionResult About()
         {
-               return View();
+            return View();
         }
         public ActionResult Contact()
         {
-               return View();
+            return View();
         }
 
-     }
+    }
 }
