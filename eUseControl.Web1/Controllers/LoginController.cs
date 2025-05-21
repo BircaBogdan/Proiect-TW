@@ -41,6 +41,7 @@ namespace eUseControl.Web1.Controllers
                 var userLogin = _session.UserLogin(data);
                 if (userLogin.Status)
                 {
+                    Session["IsAuthenticated"] = true;
                     HttpCookie cookie = _session.GenCookie(login.UserName);
                     ControllerContext.HttpContext.Response.Cookies.Add(cookie);
                     return RedirectToAction("Index", "Home");

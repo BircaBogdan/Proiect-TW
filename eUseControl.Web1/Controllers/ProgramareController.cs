@@ -12,9 +12,26 @@ namespace eUseControl.Web1.Controllers
     {
         private string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["eUseControl"].ConnectionString;
 
+        // ✅ Afișează formularul doar dacă utilizatorul este autentificat
+        public ActionResult Index()
+        {
+            if (Session["IsAuthenticated"] != null && (bool)Session["IsAuthenticated"] == true)
+            {
+                return View(); // Views/Programare/Index.cshtml
+            }
+
+            return RedirectToAction("Index", "Login");
+        }
+
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Trimite(Programare model)
         {
+            if (Session["IsAuthenticated"] == null || (bool)Session["IsAuthenticated"] == false)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 string query = "INSERT INTO Programari (Nume, Prenume, Telefon, DataProgramare, Serviciu) VALUES (@Nume, @Prenume, @Telefon, @DataProgramare, @Serviciu)";
@@ -33,7 +50,7 @@ namespace eUseControl.Web1.Controllers
 
         public ActionResult Confirmare()
         {
-            return View();
+            return View(); // Views/Programare/Confirmare.cshtml
         }
     }
 }
