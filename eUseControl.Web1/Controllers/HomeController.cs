@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Optimization;
-using eUseControl.Web1.Extension;
+using eUseControl.Domain.Entities.Contact;
 using eUseControl.Web1.Models;
-
+using eUseControl.Web1.ViewModels;
+using eUseControl.BusinessLogic.DBModel;
+using eUseControl.Web1.Extension;
 
 namespace eUseControl.Web1.Controllers
 {
     public class HomeController : BaseController
     {
+        private readonly ContactContext _context = new ContactContext();
+
         // GET: Home
         public ActionResult Index()
         {
@@ -28,21 +31,49 @@ namespace eUseControl.Web1.Controllers
             s.Services = new List<string> { "Cardiologie", "Starea Pulmonară", "Neurologie", "Pediatrie", "Stomatologie", "Laborator" };
             s.Images = new List<string> { "fa fa-heartbeat text-primary fs-4", "fa fa-x-ray text-primary fs-4", "fa fa-brain text-primary fs-4", "fa fa-wheelchair text-primary fs-4", "fa fa-tooth text-primary fs-4", "fa fa-vials text-primary fs-4" };
 
-
             return View(s);
         }
+
         public ActionResult Service()
         {
             return View();
         }
+
         public ActionResult About()
         {
             return View();
         }
+
+        [HttpGet]
         public ActionResult Contact()
         {
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Contact(ContactFormViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var contact = new UDbContact
+                {
+                    Name = model.Name,
+                    Email = model.Email,
+                    Subject = model.Subject,
+                    Message = model.Message,
+                    SentAt = DateTime.Now
+                };
+
+                _context.ContactMessages.Add(contact);
+                _context.SaveChanges();
+
+                ViewBag.Message = "Mesaj trimis cu succes!";
+                ModelState.Clear();
+                return View();
+            }
+
+            return View(model);
+        }
     }
 }

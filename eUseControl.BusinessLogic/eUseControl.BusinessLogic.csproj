@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="Core\AdminApi.cs" />
     <Compile Include="Core\UserApi.cs" />
+    <Compile Include="DBModel\ContactContext.cs" />
     <Compile Include="DBModel\ProgramareContext.cs" />
     <Compile Include="DBModel\SeshContext.cs" />
     <Compile Include="DBModel\UserContext.cs" />
