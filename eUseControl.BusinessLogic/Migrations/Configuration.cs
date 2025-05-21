@@ -10,7 +10,6 @@
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "eUseControl.BusinessLogic.DBModel.UserContext";
         }
 
         protected override void Seed(eUseControl.BusinessLogic.DBModel.UserContext context)

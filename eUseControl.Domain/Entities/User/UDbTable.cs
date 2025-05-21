@@ -31,5 +31,9 @@ namespace eUseControl.Domain.Entities.User
           public DateTime LastLogin { get; set; }
           public string LastIp { get; set; }
           public LevelAcces Level { get; set; }
+          public bool IsActive { get; set; }
+          public string PasswordHash { get; set; }
+
+
      }
 }
