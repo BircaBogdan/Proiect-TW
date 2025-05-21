@@ -7,12 +7,12 @@
     {
         public override void Up()
         {
-            AddColumn("dbo.UDbTables", "Level", c => c.Int(nullable: false));
+           // AddColumn("dbo.UDbTables", "Level", c => c.Int(nullable: false));
         }
         
         public override void Down()
         {
-            DropColumn("dbo.UDbTables", "Level");
+           // DropColumn("dbo.UDbTables", "Level");
         }
     }
 }

@@ -1,9 +1,30 @@
 ﻿@model List<eUseControl.Domain.Entities.User.UDbTable>
+
+@using eUseControl.Domain.Enums
+
 @{
      ViewBag.Title = "Registered Users";
+
+     var levels = Enum.GetValues(typeof(LevelAcces)).Cast<LevelAcces>().ToList();
 }
 
 <h2>Registered Users</h2>
+
+<form method="get" action="@Url.Action("Users", "Admin")" class="form-inline mb-3">
+     <input type="text" name="searchTerm" value="@ViewBag.SearchTerm" placeholder="Caută după username sau email" class="form-control mr-2" />
+
+     <select name="filterLevel" class="form-control mr-2">
+          <option value="">Toate nivelurile</option>
+          @foreach (var level in levels)
+          {
+               <option value="@level" @(ViewBag.FilterLevel != null && (LevelAcces)ViewBag.FilterLevel == level ? "selected" : "")>
+                    @level.ToString()
+               </option>
+          }
+     </select>
+
+     <button type="submit" class="btn btn-primary">Filtrează</button>
+</form>
 
 <table class="table table-striped table-bordered">
      <thead>
@@ -13,6 +34,7 @@
                <th>Email</th>
                <th>Last Login</th>
                <th>Last IP</th>
+               <th>Acțiuni</th>
           </tr>
      </thead>
      <tbody>
@@ -24,6 +46,35 @@
                     <td>@user.Email</td>
                     <td>@user.LastLogin.ToString("g")</td>
                     <td>@user.LastIp</td>
+                    <td>
+                         <!-- Ștergere -->
+                         @using (Html.BeginForm("DeleteUser", "Admin", FormMethod.Post, new { onsubmit = "return confirm('Ești sigur că vrei să ștergi acest utilizator?');" }))
+                         {
+                              @Html.Hidden("id", user.Id)
+                              <button type="submit" class="btn btn-danger btn-sm mb-1">Șterge</button>
+                         }
+
+                         <!-- Activare/Dezactivare -->
+                         @using (Html.BeginForm("ToggleActive", "Admin", FormMethod.Post, new { onsubmit = "return confirm('Ești sigur că vrei să " + (user.IsActive ? "dezactivezi" : "reactivezi") + " acest utilizator?');" }))
+                         {
+                              @Html.Hidden("id", user.Id)
+                              if (user.IsActive)
+                              {
+                                   <button type="submit" class="btn btn-warning btn-sm mb-1">Dezactivează</button>
+                              }
+                              else
+                              {
+                                   <button type="submit" class="btn btn-success btn-sm mb-1">Reactivează</button>
+                              }
+                         }
+
+                         <!-- Resetare parolă -->
+                         @using (Html.BeginForm("ResetPassword", "Admin", FormMethod.Post, new { onsubmit = "return confirm('Resetezi parola utilizatorului?');" }))
+                         {
+                              @Html.Hidden("id", user.Id)
+                              <button type="submit" class="btn btn-secondary btn-sm">Resetează parola</button>
+                         }
+                    </td>
                </tr>
           }
      </tbody>
