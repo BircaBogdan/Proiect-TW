@@ -7,13 +7,13 @@ namespace eUseControl.BusinessLogic.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class AdaugaPasswordHash : IMigrationMetadata
+    public sealed partial class InitialCreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AdaugaPasswordHash));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "202505212002174_AdaugaPasswordHash"; }
+            get { return "202505212115436_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source
