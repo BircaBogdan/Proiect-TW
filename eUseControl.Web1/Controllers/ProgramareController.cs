@@ -12,12 +12,12 @@ namespace eUseControl.Web1.Controllers
     {
         private string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["eUseControl"].ConnectionString;
 
-        // ✅ Afișează formularul doar dacă utilizatorul este autentificat
+        
         public ActionResult Index()
         {
             if (Session["IsAuthenticated"] != null && (bool)Session["IsAuthenticated"] == true)
             {
-                return View(); // Views/Programare/Index.cshtml
+                return View(); 
             }
 
             return RedirectToAction("Index", "Login");
@@ -50,7 +50,7 @@ namespace eUseControl.Web1.Controllers
 
         public ActionResult Confirmare()
         {
-            return View(); // Views/Programare/Confirmare.cshtml
+            return View(); 
         }
     }
 }
