@@ -21,25 +21,45 @@
      <div class="panel panel-filled">
           <div class="panel-body">
                @Html.ValidationSummary(true)
+
                @using (Html.BeginForm("Index", "Register", FormMethod.Post, new { @id = "RegisterForm" }))
                {
                     @Html.AntiForgeryToken()
+
                     <div class="form-group">
                          @Html.LabelFor(m => m.Username, new { @class = "control-label" })
                          @Html.TextBoxFor(m => m.Username, new { @class = "form-control", placeholder = "Your username" })
                     </div>
+
                     <div class="form-group">
                          @Html.LabelFor(m => m.Email, new { @class = "control-label" })
                          @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email", placeholder = "example@gmail.com" })
                     </div>
+
                     <div class="form-group">
                          @Html.LabelFor(m => m.Password, new { @class = "control-label" })
                          @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "******" })
                     </div>
+
                     <div class="form-group">
                          @Html.LabelFor(m => m.ConfirmPassword, new { @class = "control-label" })
                          @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "******" })
                     </div>
+
+                    <div class="form-group">
+                         @Html.LabelFor(m => m.Role, new { @class = "control-label" })
+                         @Html.DropDownListFor(m => m.Role, new SelectList(
+                             new[] {
+                                 new { Value = "User", Text = "User" },
+                                 new { Value = "Admin", Text = "Admin" }
+                             }, "Value", "Text"), "Select role", new { @class = "form-control", @id = "roleSelect" })
+                    </div>
+
+                    <div class="form-group" id="adminSecretDiv" style="display:none;">
+                         @Html.LabelFor(m => m.AdminSecret, new { @class = "control-label" })
+                         @Html.TextBoxFor(m => m.AdminSecret, new { @class = "form-control", placeholder = "Enter admin secret" })
+                    </div>
+
                     <div>
                          <button class="btn btn-accent">Register</button>
                          <a class="btn btn-default" href="login.html">Login</a>
@@ -51,4 +71,16 @@
 
 @section Scripts {
      @Scripts.Render("~/bundles/validation/js")
+     <script>
+        // Afișează/ascunde câmpul AdminSecret în funcție de selecția rolului
+        document.getElementById("roleSelect").addEventListener("change", function () {
+            var role = this.value;
+            var adminDiv = document.getElementById("adminSecretDiv");
+            if (role === "Admin") {
+                adminDiv.style.display = "block";
+            } else {
+                adminDiv.style.display = "none";
+            }
+        });
+     </script>
 }

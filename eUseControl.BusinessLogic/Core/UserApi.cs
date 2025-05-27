@@ -6,6 +6,7 @@ using System.Web;
 using AutoMapper;
 using eUseControl.BusinessLogic.DBModel;
 using eUseControl.Domain.Entities.User;
+using eUseControl.Domain.Enums;
 using eUseControl.Helpers;
 
 namespace eUseControl.BusinessLogic.Core
@@ -80,7 +81,7 @@ namespace eUseControl.BusinessLogic.Core
                          Password = LoginHelper.HashGen(data.Password),
                          LastLogin = DateTime.Now,
                          LastIp = data.RegisterIp,
-                         Level = 0
+                         Level = data.Role == "Admin" ? LevelAcces.Admin : LevelAcces.User
                     };
 
                     db.Users.Add(newUser);

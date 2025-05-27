@@ -27,11 +27,21 @@ namespace eUseControl.Web1.Controllers
           [ValidateAntiForgeryToken]
           public ActionResult Index(UserRegister register)
           {
+              
+               if (register.Role == "Admin" && register.AdminSecret != "superadmin")
+               {
+                    ModelState.AddModelError("", "Codul secret pentru admin este invalid.");
+                    return View(register);
+               }
+
                if (ModelState.IsValid)
                {
                     var data = Mapper.Map<URegisterData>(register);
                     data.RegisterIp = Request.UserHostAddress;
                     data.RegisterDateTime = DateTime.Now;
+
+                    
+                    data.Role = register.Role;
 
                     var registerResult = _session.UserRegister(data);
                     if (registerResult.Status)
@@ -44,7 +54,8 @@ namespace eUseControl.Web1.Controllers
                     }
                }
 
-               return View();
+               return View(register);
           }
+
      }
 }
