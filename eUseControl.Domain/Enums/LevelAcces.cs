@@ -9,6 +9,7 @@ namespace eUseControl.Domain.Enums
     public enum LevelAcces
     {
         User,
-        Admin
+        Admin,
+        DoctorCardiologie
     }
 }

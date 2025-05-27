@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using eUseControl.Domain.Entities.Contact;
+using eUseControl.Domain.Entities.Programare;
 using eUseControl.Web1.Models;
 using eUseControl.Web1.ViewModels;
 using eUseControl.BusinessLogic.DBModel;
@@ -14,9 +15,11 @@ namespace eUseControl.Web1.Controllers
     public class HomeController : BaseController
     {
         private readonly ContactContext _context = new ContactContext();
+        private readonly ProgramareContext _progcontext = new ProgramareContext();
 
-        // GET: Home
-        public ActionResult Index()
+
+          // GET: Home
+          public ActionResult Index()
         {
             SessionStatus();
             if ((string)System.Web.HttpContext.Current.Session["LoginStatus"] != "login")
@@ -75,5 +78,5 @@ namespace eUseControl.Web1.Controllers
 
             return View(model);
         }
-    }
+     }
 }
