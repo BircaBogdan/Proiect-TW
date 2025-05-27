@@ -348,11 +348,14 @@
     <Compile Include="AutoMapperProfile.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AlteServiciiController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CardiologieController.cs" />
+    <Compile Include="Controllers\DermatologieController.cs" />
     <Compile Include="Controllers\DoctorDetailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ORLController.cs" />
     <Compile Include="Controllers\ProgramareController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Extensions\HttpContextExtensions.cs" />
@@ -392,6 +395,9 @@
     <Content Include="Views\Programare\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Cardiologie\ProgramariCardiologie.cshtml" />
+    <Content Include="Views\AlteServicii\ProgramariAlteServicii.cshtml" />
+    <Content Include="Views\Dermatologie\ProgramariDermatologie.cshtml" />
+    <Content Include="Views\ORL\ProgramariORL.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

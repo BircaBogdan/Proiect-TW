@@ -16,6 +16,18 @@
           {
                <a href="@Url.Action("ProgramariCardiologie", "Cardiologie")" class="nav-item nav-link">Programari</a>
           }
+          @if (user != null && user.Level == LevelAcces.DoctorDermatologie)
+          {
+               <a href="@Url.Action("ProgramariDermatologie", "Dermatologie")" class="nav-item nav-link">Programari</a>
+          }
+          @if (user != null && user.Level == LevelAcces.DoctorORL)
+          {
+               <a href="@Url.Action("ProgramariORL", "ORL")" class="nav-item nav-link">Programari</a>
+          }
+          @if (user != null && user.Level == LevelAcces.DoctorAlteServicii)
+          {
+               <a href="@Url.Action("ProgramariAlteServicii", "AlteServicii")" class="nav-item nav-link">Programari</a>
+          }
           @if (user != null && user.Level == LevelAcces.Admin)
           {
                <a href="@Url.Action("Users", "Admin")" class="nav-item nav-link">Utilizatori</a>

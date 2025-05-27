@@ -10,6 +10,9 @@ namespace eUseControl.Domain.Enums
     {
         User,
         Admin,
-        DoctorCardiologie
+        DoctorCardiologie,
+        DoctorDermatologie,
+        DoctorORL,
+        DoctorAlteServicii
     }
 }

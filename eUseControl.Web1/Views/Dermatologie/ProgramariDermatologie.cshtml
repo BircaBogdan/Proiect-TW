@@ -1,0 +1,31 @@
+﻿@model List<eUseControl.Web1.Models.Programare>
+
+@{
+     ViewBag.Title = "Programări Dermatologie";
+}
+
+<h2>Programări Dermatologie</h2>
+
+<table class="table table-striped">
+     <thead>
+          <tr>
+               <th>Nume</th>
+               <th>Prenume</th>
+               <th>Telefon</th>
+               <th>Data</th>
+               <th>Serviciu</th>
+          </tr>
+     </thead>
+     <tbody>
+          @foreach (var item in Model)
+          {
+               <tr>
+                    <td>@item.Nume</td>
+                    <td>@item.Prenume</td>
+                    <td>@item.Telefon</td>
+                    <td>@item.DataProgramare.ToString("dd/MM/yyyy")</td>
+                    <td>@item.Serviciu</td>
+               </tr>
+          }
+     </tbody>
+</table>
