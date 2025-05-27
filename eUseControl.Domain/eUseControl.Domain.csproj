@@ -67,6 +67,7 @@
     <Compile Include="Entities\User\URegisterResp.cs" />
     <Compile Include="Entities\User\UserMinimal.cs" />
     <Compile Include="Enums\LevelAcces.cs" />
+    <Compile Include="Enums\StareProgramare.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

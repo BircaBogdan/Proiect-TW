@@ -1,0 +1,2 @@
+﻿ALTER TABLE Programari ADD Stare INT NOT NULL DEFAULT 0;
+

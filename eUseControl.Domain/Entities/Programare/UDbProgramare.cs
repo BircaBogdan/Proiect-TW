@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using eUseControl.Domain.Enums;
 
 namespace eUseControl.Domain.Entities.Programare
 {
@@ -43,5 +44,8 @@ namespace eUseControl.Domain.Entities.Programare
         [Display(Name = "Mesaj opțional")]
         [StringLength(500)]
         public string Mesaj { get; set; }
-    }
+        [Required]
+        [Display(Name = "Stare programare")]
+        public StareProgramare Stare { get; set; } = StareProgramare.InAsteptare;
+     }
 }

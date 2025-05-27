@@ -1,0 +1,52 @@
+﻿@model List<eUseControl.Web1.Models.Programare>
+@using eUseControl.Domain.Enums
+
+@{
+     ViewBag.Title = "Programări Cardiologie";
+}
+
+<h2>Programări Cardiologie</h2>
+
+<table class="table table-striped">
+     <thead>
+          <tr>
+               <th>Nume</th>
+               <th>Prenume</th>
+               <th>Telefon</th>
+               <th>Data</th>
+               <th>Serviciu</th>
+               <th>Stare</th>
+               <th>Acțiuni</th>
+          </tr>
+     </thead>
+     <tbody>
+          @foreach (var item in Model)
+          {
+               <tr>
+                    <td>@item.Nume</td>
+                    <td>@item.Prenume</td>
+                    <td>@item.Telefon</td>
+                    <td>@item.DataProgramare.ToString("dd/MM/yyyy")</td>
+                    <td>@item.Serviciu</td>
+                    <td>@((StareProgramare)item.Stare)</td>
+                    <td>
+                         @using (Html.BeginForm("SchimbaStare", "Programare", FormMethod.Post))
+                         {
+                              @Html.Hidden("id", item.Id)
+                              @Html.Hidden("nouaStare", (int)StareProgramare.Confirmata)
+                              @Html.Hidden("specialitate", item.Serviciu) @* Trimitem specialitatea/serviciul *@
+                              <button type="submit" class="btn btn-success btn-sm">Confirmă</button>
+                         }
+
+                         @using (Html.BeginForm("SchimbaStare", "Programare", FormMethod.Post))
+                         {
+                              @Html.Hidden("id", item.Id)
+                              @Html.Hidden("nouaStare", (int)StareProgramare.Anulata)
+                              @Html.Hidden("specialitate", item.Serviciu)
+                              <button type="submit" class="btn btn-danger btn-sm">Anulează</button>
+                         }
+                    </td>
+               </tr>
+          }
+     </tbody>
+</table>
