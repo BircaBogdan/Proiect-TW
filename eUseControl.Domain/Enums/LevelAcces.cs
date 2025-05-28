@@ -8,8 +8,8 @@ namespace eUseControl.Domain.Enums
 {
     public enum LevelAcces
     {
-        User,
-        Admin,
+        User = 0,
+        Admin = 1,
         DoctorCardiologie,
         DoctorDermatologie,
         DoctorORL,

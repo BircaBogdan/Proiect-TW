@@ -6,6 +6,7 @@ using System.Web;
 using AutoMapper;
 using eUseControl.BusinessLogic.DBModel;
 using eUseControl.Domain.Entities.User;
+using eUseControl.Domain.Enums;
 using eUseControl.Helpers;
 
 namespace eUseControl.BusinessLogic.Core
@@ -61,15 +62,16 @@ namespace eUseControl.BusinessLogic.Core
                     return new URegisterResp { Status = false, StatusMsg = "Username or email already exists." };
                 }
 
-                var newUser = new UDbTable
-                {
-                    Username = data.UserName,
-                    Email = data.Email,
-                    Password = LoginHelper.HashGen(data.Password),
-                    LastLogin = DateTime.Now,
-                    LastIp = data.RegisterIp,
-                    Level = 0
-                };
+                    var newUser = new UDbTable
+                    {
+                         Username = data.UserName,
+                         Email = data.Email,
+                         Password = LoginHelper.HashGen(data.Password),
+                         LastLogin = DateTime.Now,
+                         LastIp = data.RegisterIp,
+                         Level = data.Role == "Admin" ? LevelAcces.Admin : LevelAcces.User,
+                         Level = 0
+                    };
 
                 db.Users.Add(newUser);
                 db.SaveChanges();
