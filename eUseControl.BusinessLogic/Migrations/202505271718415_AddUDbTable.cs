@@ -1,16 +1,16 @@
 ﻿namespace eUseControl.BusinessLogic.Migrations
 {
-     using System;
-     using System.Data.Entity.Migrations;
-
-     public partial class InitialCreate : DbMigration
-     {
-          public override void Up()
-          {
-               CreateTable(
-                   "dbo.UDbTables",
-                   c => new
-                   {
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class AddUDbTable : DbMigration
+    {
+        public override void Up()
+        {
+            CreateTable(
+                "dbo.UDbTables",
+                c => new
+                    {
                         Id = c.Int(nullable: false, identity: true),
                         Username = c.String(nullable: false, maxLength: 30),
                         Password = c.String(nullable: false, maxLength: 50),
@@ -20,13 +20,15 @@
                         Level = c.Int(nullable: false),
                         IsActive = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
-                   })
-                   .PrimaryKey(t => t.Id);
-          }
-
-          public override void Down()
-          {
-               DropTable("dbo.UDbTables");
-          }
-     }
+                        Telefon = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+        }
+        
+        public override void Down()
+        {
+            DropTable("dbo.UDbTables");
+        }
+    }
 }

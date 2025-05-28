@@ -7,13 +7,13 @@ namespace eUseControl.BusinessLogic.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class AddUDbTable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddUDbTable));
         
         string IMigrationMetadata.Id
         {
-            get { return "202505212115436_InitialCreate"; }
+            get { return "202505271718415_AddUDbTable"; }
         }
         
         string IMigrationMetadata.Source

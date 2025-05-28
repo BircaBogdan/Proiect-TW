@@ -33,7 +33,8 @@ namespace eUseControl.Domain.Entities.User
           public LevelAcces Level { get; set; }
           public bool IsActive { get; set; }
           public string PasswordHash { get; set; }
+        public string Telefon { get; set; }
 
 
-     }
+    }
 }

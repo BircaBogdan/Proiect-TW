@@ -1,0 +1,47 @@
+﻿@model List<eUseControl.Web1.Models.Programare>
+
+@{
+    ViewBag.Title = "Programările Mele";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4 text-primary">Programările Mele</h2>
+
+    @if (Model != null && Model.Any())
+    {
+        <table class="table table-bordered table-striped">
+            <thead class="table-primary">
+                <tr>
+                    <th>#</th>
+                    <th>Nume</th>
+                    <th>Prenume</th>
+                    <th>Telefon</th>
+                    <th>Data programării</th>
+                    <th>Serviciu</th>
+                    <th>Email Pacient</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <tr>
+                        <td>@(i + 1)</td>
+                        <td>@(Model[i].Nume ?? "-")</td>
+                        <td>@(Model[i].Prenume ?? "-")</td>
+                        <td>@(Model[i].Telefon ?? "-")</td>
+                        <td>@Model[i].DataProgramare.ToString("dd.MM.yyyy HH:mm")</td>
+                        <td>@(Model[i].Serviciu ?? "-")</td>
+                        <td>@(Model[i].PacientEmail ?? "-")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-info text-center">
+            Nu aveți nicio programare înregistrată.
+        </div>
+    }
+</div>

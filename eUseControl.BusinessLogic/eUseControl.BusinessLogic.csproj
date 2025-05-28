@@ -170,9 +170,9 @@
     <Compile Include="Interfaces\IDoctor.cs" />
     <Compile Include="Interfaces\ISession.cs" />
     <Compile Include="Interfaces\SessionBL.cs" />
-    <Compile Include="Migrations\202505212115436_InitialCreate.cs" />
-    <Compile Include="Migrations\202505212115436_InitialCreate.Designer.cs">
-      <DependentUpon>202505212115436_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202505271718415_AddUDbTable.cs" />
+    <Compile Include="Migrations\202505271718415_AddUDbTable.Designer.cs">
+      <DependentUpon>202505271718415_AddUDbTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -200,8 +200,8 @@
     <Content Include="mongocrypt.dll" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202505212115436_InitialCreate.resx">
-      <DependentUpon>202505212115436_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202505271718415_AddUDbTable.resx">
+      <DependentUpon>202505271718415_AddUDbTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

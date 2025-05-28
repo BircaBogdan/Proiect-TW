@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
@@ -14,12 +12,12 @@ namespace eUseControl.Web1.Controllers
     public class LoginController : Controller
     {
         private readonly ISession _session;
+
         public LoginController()
         {
             var bl = new BussinesLogic();
             _session = bl.GetSessionBL();
         }
-
 
         // GET: Login
         public ActionResult Index()
@@ -39,23 +37,33 @@ namespace eUseControl.Web1.Controllers
                 data.LoginDateTime = DateTime.Now;
 
                 var userLogin = _session.UserLogin(data);
+
                 if (userLogin.Status)
                 {
                     Session["IsAuthenticated"] = true;
+
+                    // ✅ Adăugăm emailul utilizatorului în sesiune
+                    Session["Email"] = userLogin.Email;
+
+                    // ✅ Salvăm telefonul utilizatorului în sesiune
+                    Session["Telefon"] = userLogin.Telefon;
+
+                    // ✅ Salvăm cookie-ul de autentificare
                     HttpCookie cookie = _session.GenCookie(login.UserName);
                     ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    ModelState.AddModelError("Nume de utilizator sau parola incorecta.", userLogin.StatusMsg);
+                    ModelState.AddModelError(string.Empty, userLogin.StatusMsg);
                     return View();
                 }
-
             }
 
             return View();
         }
+
         public ActionResult Logout()
         {
             if (Request.Cookies["X-KEY"] != null)
