@@ -19,7 +19,6 @@
                     <th>Telefon</th>
                     <th>Data programării</th>
                     <th>Serviciu</th>
-                    <th>Email Pacient</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,7 +31,6 @@
                         <td>@(Model[i].Telefon ?? "-")</td>
                         <td>@Model[i].DataProgramare.ToString("dd.MM.yyyy HH:mm")</td>
                         <td>@(Model[i].Serviciu ?? "-")</td>
-                        <td>@(Model[i].PacientEmail ?? "-")</td>
                     </tr>
                 }
             </tbody>

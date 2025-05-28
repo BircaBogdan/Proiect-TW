@@ -70,7 +70,6 @@ namespace eUseControl.BusinessLogic.Core
                          LastLogin = DateTime.Now,
                          LastIp = data.RegisterIp,
                          Level = data.Role == "Admin" ? LevelAcces.Admin : LevelAcces.User,
-                         Level = 0
                     };
 
                 db.Users.Add(newUser);
