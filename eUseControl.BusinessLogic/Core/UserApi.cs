@@ -49,7 +49,7 @@ namespace eUseControl.BusinessLogic.Core
                 Status = true,
                 StatusMsg = "Login successful",
                 Telefon = result.Telefon,
-                Email = result.Email // ← PROPRIETATEA EMAIL ADĂUGATĂ AICI
+                Email = result.Email
             };
         }
 

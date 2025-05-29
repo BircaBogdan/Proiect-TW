@@ -1,0 +1,32 @@
+﻿@model eUseControl.Web1.Models.Programare
+
+@{
+    ViewBag.Title = "Schimbă Starea Programării";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Schimbă Starea Programării</h2>
+
+<div class="container mt-4">
+    <h4>Programare: @Model.Nume @Model.Prenume - @Model.DataProgramare.ToString("dd.MM.yyyy HH:mm")</h4>
+    <p>Serviciu: @Model.Serviciu</p>
+
+    @using (Html.BeginForm("SchimbaStare", "Programare", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.Hidden("id", Model.Id) 
+
+        <div class="form-group">
+            <label for="stareNoua">Selectați noua stare:</label>
+            <select id="stareNoua" name="stareNoua" class="form-control" required>
+                <option value="@((int)eUseControl.Domain.Enums.StareProgramare.InAsteptare)" @(Model.Stare == eUseControl.Domain.Enums.StareProgramare.InAsteptare ? "selected" : "")>În așteptare</option>
+                <option value="@((int)eUseControl.Domain.Enums.StareProgramare.Confirmata)" @(Model.Stare == eUseControl.Domain.Enums.StareProgramare.Confirmata ? "selected" : "")>Confirmată</option>
+                <option value="@((int)eUseControl.Domain.Enums.StareProgramare.Anulata)" @(Model.Stare == eUseControl.Domain.Enums.StareProgramare.Anulata ? "selected" : "")>Anulată</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3">Salvează</button>
+        <a href="@Url.Action("ProgramarileMele", "Programare")" class="btn btn-secondary mt-3">Anulează</a>
+    }
+</div>

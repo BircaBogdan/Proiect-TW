@@ -4,7 +4,7 @@
 @{
     var user = System.Web.HttpContext.Current.GetMySessionObject();
 }
-<a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+<a href="@Url.Action("Index", "Home")" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
     <h1 class="m-0 text-primary"><i class="far fa-hospital me-3"></i>Clinică</h1>
 </a>
 <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">

@@ -8,7 +8,7 @@ namespace eUseControl.Domain.Entities.User
         public string StatusMsg { get; set; }
         public string Telefon { get; set; }
 
-        // ✅ Adăugăm proprietatea Email
+     
         public string Email { get; set; }
     }
 }

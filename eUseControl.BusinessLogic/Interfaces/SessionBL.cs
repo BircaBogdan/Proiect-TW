@@ -14,7 +14,7 @@ namespace eUseControl.BusinessLogic
 
           public URegisterResp UserRegister(URegisterData data)
           {
-               return UserRegisterAction(data);  // Implement this in UserApi
+               return UserRegisterAction(data);
           }
 
           public HttpCookie GenCookie(string loginCredential)

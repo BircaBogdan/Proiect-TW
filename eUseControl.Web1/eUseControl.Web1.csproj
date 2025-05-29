@@ -399,6 +399,7 @@
     <Content Include="Views\Dermatologie\ProgramariDermatologie.cshtml" />
     <Content Include="Views\ORL\ProgramariORL.cshtml" />
     <Content Include="Views\Programare\ProgramarileMele.cshtml" />
+    <Content Include="Views\Programare\SchimbaStare.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

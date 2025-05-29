@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Web.Mvc;
-using eUseControl.Web1.Models; // Modelul Programare
-using eUseControl.Domain.Enums; // Enumul StareProgramare
+using eUseControl.Web1.Models;
+using eUseControl.Domain.Enums;
 
 namespace eUseControl.Web1.Controllers
 {
@@ -14,13 +14,19 @@ namespace eUseControl.Web1.Controllers
 
         public ActionResult ProgramariCardiologie()
         {
+            if (Session["IsAuthenticated"] == null || !(bool)Session["IsAuthenticated"])
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             var programari = new List<Programare>();
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string query = "SELECT * FROM Programari WHERE Serviciu = @Serviciu";
+                string query = "SELECT * FROM Programari WHERE Serviciu = @Serviciu AND (Stare IS NULL OR Stare != @Anulata) ORDER BY DataProgramare ASC";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Serviciu", "Cardiologie");
+                cmd.Parameters.AddWithValue("@Anulata", (int)StareProgramare.Anulata);
 
                 conn.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -34,8 +40,7 @@ namespace eUseControl.Web1.Controllers
                         Telefon = reader["Telefon"].ToString(),
                         DataProgramare = (DateTime)reader["DataProgramare"],
                         Serviciu = reader["Serviciu"].ToString(),
-
-                        // Conversie sigură pentru enum
+                        PacientEmail = reader["Email"].ToString(),
                         Stare = Enum.TryParse(reader["Stare"].ToString(), out StareProgramare stare)
                                 ? stare
                                 : StareProgramare.InAsteptare

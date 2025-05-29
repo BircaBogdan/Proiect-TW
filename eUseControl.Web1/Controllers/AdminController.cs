@@ -23,7 +23,6 @@ namespace eUseControl.Web1.Controllers
                _session = bl.GetSessionBL();
           }
 
-          // Acum cu parametri pentru căutare și filtrare
           public ActionResult Users(string searchTerm = null, LevelAcces? filterLevel = null)
           {
                var cookie = Request.Cookies["X-KEY"]?.Value;
@@ -50,7 +49,7 @@ namespace eUseControl.Web1.Controllers
 
                     var users = usersQuery.ToList();
 
-                    // Pasăm valorile în ViewBag pentru păstrarea în View
+              
                     ViewBag.SearchTerm = searchTerm;
                     ViewBag.FilterLevel = filterLevel;
 
@@ -74,7 +73,7 @@ namespace eUseControl.Web1.Controllers
                     var user = db.Users.FirstOrDefault(u => u.Id == id);
                     if (user != null)
                     {
-                         // Prevenim ștergerea propriului cont admin
+                
                          if (user.Id != currentUser.Id)
                          {
                               db.Users.Remove(user);
@@ -99,7 +98,7 @@ namespace eUseControl.Web1.Controllers
                using (var db = new UserContext())
                {
                     var user = db.Users.FirstOrDefault(u => u.Id == id);
-                    if (user != null && user.Id != currentUser.Id) // nu te poți dezactiva pe tine
+                    if (user != null && user.Id != currentUser.Id) 
                     {
                          user.IsActive = !user.IsActive;
                          db.Entry(user).State = EntityState.Modified;
@@ -124,16 +123,16 @@ namespace eUseControl.Web1.Controllers
                     var user = db.Users.FirstOrDefault(u => u.Id == id);
                     if (user != null)
                     {
-                         // Exemplu de parola temporara simpla (in realitate, genereaza una complexa)
+                  
                          string newPassword = "Temp1234";
 
-                         // Seteaza parola (asuma ca ai metoda pentru acripta)
-                         user.PasswordHash = HashPassword(newPassword); // adapteaza după cum ai în sistemul tău
+                    
+                         user.PasswordHash = HashPassword(newPassword);
 
                          db.Entry(user).State = EntityState.Modified;
                          db.SaveChanges();
 
-                         // Optional: trimite email cu parola nouă
+                   
                     }
                }
                return RedirectToAction("Users");

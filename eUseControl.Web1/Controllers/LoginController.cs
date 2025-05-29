@@ -42,13 +42,13 @@ namespace eUseControl.Web1.Controllers
                 {
                     Session["IsAuthenticated"] = true;
 
-                    // ✅ Adăugăm emailul utilizatorului în sesiune
+                 
                     Session["Email"] = userLogin.Email;
 
-                    // ✅ Salvăm telefonul utilizatorului în sesiune
+                
                     Session["Telefon"] = userLogin.Telefon;
 
-                    // ✅ Salvăm cookie-ul de autentificare
+                
                     HttpCookie cookie = _session.GenCookie(login.UserName);
                     ControllerContext.HttpContext.Response.Cookies.Add(cookie);
 
